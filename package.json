@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
-  "homepage": "https://github.com/larasatirida/webdev1#readme",
+  "homepage": "https://github.com/larasatirida/portofolioweb#readme",
   "bugs": {
-    "url": "https://github.com/larasatirida/webdev1/issues"
+    "url": "https://github.com/larasatirida/portofolioweb/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/larasatirida/webdev1.git"
+    "url": "git+https://github.com/larasatirida/portofolioweb.git"
   },
   "license": "ISC",
   "author": "",
