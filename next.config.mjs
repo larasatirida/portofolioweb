@@ -1,3 +1,4 @@
+import path from 'path';
 import { withPayload } from "@payloadcms/next/withPayload";
 
 /** @type {import('next').NextConfig} */
@@ -8,7 +9,7 @@ const nextConfig = {
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@payload-config': './payload.config.ts',
+      '@payload-config': path.resolve('./payload.config.ts'), // <- pakai path.resolve
     };
     return config;
   },
