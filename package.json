@@ -2,22 +2,47 @@
   "name": "webdev1",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "homepage": "https://github.com/larasatirida/webdev1#readme",
+  "bugs": {
+    "url": "https://github.com/larasatirida/webdev1/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larasatirida/webdev1.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+ "dev": "next dev",
+ "build": "next build",
+ "start": "next start",
+ "lint": "eslint",
+ "generate:importmap": "payload generate:importmap",
+ "generate:types": "payload generate:types"
+},
   "dependencies": {
+    "@payloadcms/db-postgres": "^3.61.1",
+    "@payloadcms/next": "^3.61.1",
+    "@payloadcms/richtext-lexical": "^3.61.1",
+    "@payloadcms/storage-s3": "^3.61.1",
+    "aos": "^2.3.4",
+    "framer-motion": "^12.23.24",
+    "graph": "^0.2.0",
+    "next": "15.5.6",
+    "payload": "^3.61.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.6"
+    "react-icons": "^5.5.0",
+    "sharp": "^0.34.4"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.5.6",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4"
   }
 }

@@ -1,103 +1,136 @@
+"use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import Navbar from "./components/Navbar";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        {<Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />}
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const router = useRouter();
+  const [isLeaving, setIsLeaving] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const handleOpenAboutMe = () => {
+    setIsLeaving(true);
+    setTimeout(() => router.push("/aboutme"), 300);
+  };
+
+  const handleOpenEvidence = () => {
+    router.push("/projects");
+  };
+
+  const handleOpenReport = () => {
+    router.push("/experiences");
+  };
+
+  return (
+    <>
+      <Navbar />
+      <main
+        className={`pt-14 transition-transform duration-300 ease-in-out ${
+          isLeaving ? "opacity-0 -translate-y-6" : "opacity-100 translate-y-0"
+        } flex flex-col flex-1 text-[#2b1d0e] items-center justify-center w-full min-h-screen`}
+      >
+        <section id="aboutme" className="flex flex-row items-center justify-center gap-10 text-[#2b1d0e] pt-20">
+          <div className="group w-[150px] md:w-[300px] h-auto [perspective:1000px]">
+            <div className="relative w-full h-full transition-transform duration-500 transform-gpu [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className="absolute inset-0 flex items-center justify-center [backface-visibility:hidden]">
+                <Image
+                  src="/casecover.svg"
+                  alt="cover"
+                  width={300}
+                  height={300}
+                  className="w-[150px] md:w-[300px] h-auto shadow-xl"
+                />
+              </div>
+
+              <div className="absolute inset-0 flex items-center justify-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                <Image
+                  src="/my case.svg"
+                  alt="my photo"
+                  width={300}
+                  height={300}
+                  className="w-[150px] md:w-[300px] h-auto shadow-xl"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col">
+            <h1 className="text-[15px] md:text-[60px] ">
+              THE <br /> INVESTIGATION <br /> OF LARAS
+            </h1>
+            <button
+              onClick={handleOpenAboutMe}
+              disabled={isLeaving}
+              className="z-10 w-fit p-1 text-[10px] md:text-lg mt-2 border-2 border-[#2b1d0e] hover:bg-[#2b1d0e] hover:text-[#DDC591] transition duration-[200ms] disabled:opacity-50 disabled:cursor-wait"
+            >
+              Open the case
+            </button>
+          </div>
+        </section>
+
+        <section id="projects" className="w-full py-20 flex flex-col md:flex-row-reverse justify-center md:justify-between items-center md:items-start px-5 md:px-10 text-center md:text-left md:mr-40">
+          <div className="flex flex-col gap-20 md:items-end w-full md:w-[500px]">
+            <div className="relative flex justify-center">
+              <Image
+                width={200}
+                height={130}
+                src="/projek2.svg"
+                alt="AI Summarizer"
+                className="relative w-[200px] md:w-[449px] rotate-[-10deg] shadow-xl"
+              />
+            </div>
+
+            <div className="relative -mt-40 md:-mt-50 flex justify-center">
+              <Image
+                width={200}
+                height={130}
+                src="/projek1.svg"
+                alt="Flower Classifier AI"
+                className="w-[200px] md:w-[449px] rotate-[8deg] shadow-xl translate-x-[-25px] translate-y-[50px] md:translate-x-[-100px]"
+              />
+            </div>
+          </div>
+          <button
+            onClick={handleOpenEvidence}
+            className="relative z-10 mt-[80px] ml-[100px] md:mt-[200px] md:ml-[200px] top-5 w-fit p-1 text-[10px] md:text-lg border-2 border-[#2b1d0e] hover:bg-[#2b1d0e] hover:text-[#DDC591] transition duration-[200ms]"
           >
+            Open the evidence file
+          </button>
+        </section>
+
+        <section id="experiences" className="w-full py-10 flex flex-col md:flex-row justify-center md:justify-between items-center md:items-start px-5 md:px-10 text-center md:text-left">
+          <div className="relative w-[300px] md:w-[700px] h-[500px] md:h-[800px] flex justify-center">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              width={150}
+              height={100}
+              src="/report1.webp"
+              alt="Courses"
+              className="absolute md:top-0 md:left-[100px] w-[150px] md:w-[300px] rotate-[-10deg] shadow-xl z-10"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <Image
+              width={150}
+              height={100}
+              src="/report2.webp"
+              alt="Events"
+              className="absolute top-[100px] md:top-[200px] left-[30px] md:left-[300px] w-[150px] md:w-[300px] rotate-[8deg] shadow-xl z-20"
+            />
+            <Image
+              width={150}
+              height={100}
+              src="/report3.webp"
+              alt="Organization"
+              className="absolute top-[200px] md:top-[400px] left-[130px] md:left-[40px] w-[150px] md:w-[300px] rotate-[3deg] z-30"
+            />
+          </div>
+
+          <button
+            onClick={handleOpenReport}
+            className="relative z-50 -mt-20 md:mt-[200px] md:mr-[100px] w-fit p-1 text-[10px] md:text-lg border-2 border-[#2b1d0e] hover:bg-[#2b1d0e] hover:text-[#DDC591] transition duration-[200ms]"
           >
-            Read our docs
-          </a>
-        </div>
+            Open the report file
+          </button>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </>
   );
 }
