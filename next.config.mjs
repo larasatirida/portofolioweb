@@ -5,6 +5,13 @@ const nextConfig = {
   experimental: {
     reactCompiler: false,
   },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@payload-config': './payload.config.ts',
+    };
+    return config;
+  },
 };
 
 // Wrap config dengan Payload plugin

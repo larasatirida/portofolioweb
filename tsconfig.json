@@ -8,12 +8,12 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "noEmit": true,
     "incremental": true,
-    "module": "esnext",
+    "module": "NodeNext",
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -21,6 +21,16 @@
       {
         "name": "next"
       }
+    ],
+    "paths": {
+      "@payload-config": ["./payload.config.ts"],
+      "@/*": ["./*"]
+    },
+    "types": [
+      "node",
+      "estree",
+      "json-schema",
+      "lodash"
     ]
   },
   "include": [
